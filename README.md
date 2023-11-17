@@ -1,5 +1,5 @@
 # The Operative: No One Lives Forever Dedicated Server
-A Docker container for running a dedicated NOLF1 server under Wine, built from [jlesage/docker-baseimage-gui](https://github.com/jlesage/docker-baseimage-gui), with Alpine as the base OS. Since the NOLF series is currently abandonware, I have decided to include the gamefiles from the GOTY edition within the container, bringing its size up to `1.66GB`. The container also includes the latest version of Modernizer (`1.006 with Patch 3.1`) pre-installed. Due to this you can simply pull this container and have a functioning server without needing to supply any additional files.
+A Docker container for running a dedicated NOLF1 server under Wine, built from [jlesage/docker-baseimage-gui](https://github.com/jlesage/docker-baseimage-gui), with Alpine as the base OS. Since the NOLF series is currently abandonware, I have decided to include the game files from the GOTY edition within the container, bringing its size up to `1.66GB`. The container also includes the latest version of Modernizer (`1.006 with Patch 3.1`) pre-installed. Due to this you can simply pull this container and have a functioning server without needing to supply any additional files.
 
 ### docker compose
 
@@ -96,13 +96,15 @@ If you intend to build the Dockerfile yourself, I have not pinned the packages a
 | cabextract					  | 1.11-r1	 |
 
 ## Notes
+- The docker-compose.yml (the recommended way to run and manage the server) will create two named volumes: `nolf-gamefiles` and `nolf-logs`. Unfortunately `nolf-gamefiles` will create a full local copy of all the containers contents, meaning you will be using double the disk space. This is due to the fact that the container is ephemeral, but we need to persist `NetHost.txt` in order to save our current game settings. I will fix this in the near future, but if you wish to avoid this you can remove the named `nolf-gamefiles` volume and replace it with a bind mount on the host. Please ensure it has proper permissions, and try to use `gamefiles/startup.txt` from this repo to ensure the script correctly updates any custom rez files.
+
 - Server passwords do not work. I included the functionality for them inside the container startup script, but anyone will be able to join your server without supplying a password. If you have a fix for this please contact me and I will update the image.
 
 - Under game options, Server Address will show the internal IP of the container rather than your public IP address, will look in to a fix in the future.
 
 - The image has additional environment variables you can customize, take a look at [this page](https://github.com/jlesage/docker-baseimage-gui#environment-variables) for more information. I have not tested the container with any variables other than what is defined in this repo; use these at your own risk.
 
-- `KEEP_APP_RUNNING="1"` will ensure the server restarts automatically if it crashes. However if you have not disabled the server wizard (`DISABLE_WIZARD="False"`) it will restart to directly to the wizard GUI. Consider setting up your server using the GUI, then disabling the wizard for unattended automatic.
+- `KEEP_APP_RUNNING="1"` will ensure the server restarts automatically if it crashes. However if you have not disabled the server wizard (`DISABLE_WIZARD="True"`) it will restart to directly to the wizard GUI. Consider setting up your server using the GUI, then disabling the wizard for unattended server reboots.
 
 - You can pass additional arguments to the server using `ADDITIONAL_ARGS=""` in your compose file or run command. For example, to enable friendly-fire and turn on Audio Taunts, you could add `ADDITIONAL_ARGS="-NetFriendlyFire 1.0 -NetAudioTaunts 1"` to your compose file or run command. See below for all valid arguments:
 

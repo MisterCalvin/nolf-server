@@ -26,7 +26,7 @@ services:
       - "ADDITIONAL_ARGS=" # Optional: Additional game arguments; Default: unset
     volumes:
       - nolf-gamefiles:/container/.wine/drive_c/nolf
-      - nolf-logs:/container/.wine/drive_c/nolf
+      - nolf-logs:/config
       - /path/to/your/customrez/files:/container/.wine/drive_c/nolf/custom/ # Directory for custom rez files you wish to load
     ports:
       - 27888-27889:27888-27889/udp # Query + Game

@@ -90,6 +90,8 @@ If you intend to build the Dockerfile yourself, I have not pinned the packages a
 | wget              | 3.1.6.0      |
 | cabextract					  | 1.11-r1	 |
 
+I have not include the necessary game files in the repo, they are only available inside the container. If you wish to build this image you will need to supply your own NOLF files, be sure to copy `gamefiles/NetHost.txt` and `gamefiles/startup.txt` from this repo to ensure the startup script works correctly.
+
 ## Notes
 - Server passwords do not work. I included the functionality for them inside the container startup script, but anyone will be able to join your server without supplying a password. If you have a fix for this please contact me and I will update the image.
 

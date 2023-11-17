@@ -4,20 +4,20 @@ services:
     image: ghcr.io/mistercalvin/nolf-server:latest
     container_name: nolf-server
     environment:
-      TZ="" # Optional: Timezone for any log data inside container; Default: unset
-      USER_ID="1000" # Optional: Set the UID for the user inside the container; Default: 1000
-      GROUP_ID="1000" # Optional: Set the GID for the user inside the container; Default: 1000
-      KEEP_APP_RUNNING="1" # Optional: Restart app inside the container if it has crashed; Default: 1
-      DISPLAY_WIDTH="800" # Optional: Display height of the server application inside the container; Default: 800
-      DISPLAY_HEIGHT="600" # Optional: Display width of the server application inside the container; Default: 600
-      SERVER_NAME="A Docker NOLF Server" # Required: The name of your server (<= 24 Characters); Default: A NOLF Docker Server
-      SERVER_PASSWORD="" # Optional: Password for your server; Default: unset
-      SERVER_PORT="27888" # Required: Port the server will use; Default: 278888
-      MAX_PLAYERS="8" # Required: Max Players for Server; Default: 8
-      GAMETYPE="2" # 1 = Required: H.A.R.M vs. UNITY, 2 = DeathMatch; Default: 2
-      DISABLE_WIZARD="False" # Optional: Disable server wizard on startup; Default: False
-      CUSTOM_REZ="" # Optional: Any custom rez files, separated by a space (case-sensitive, WITHOUT file extension); Default: unset
-      ADDITIONAL_ARGS="" # Optional: Additional game arguments; Default: unset
+      - TZ="UTC" # Optional: Timezone for any log data inside container; Default: unset
+      - USER_ID="1000" # Optional: Set the UID for the user inside the container; Default: 1000
+      - GROUP_ID="1000" # Optional: Set the GID for the user inside the container; Default: 1000
+      - KEEP_APP_RUNNING="1" # Optional: Restart app inside the container if it has crashed; Default: 1
+      - DISPLAY_WIDTH="800" # Optional: Display height of the server application inside the container; Default: 800
+      - DISPLAY_HEIGHT="600" # Optional: Display width of the server application inside the container; Default: 600
+      - SERVER_NAME="A Docker NOLF Server" # Required: The name of your server (<= 24 Characters); Default: A NOLF Docker Server
+      - SERVER_PASSWORD="" # Optional: Password for your server; Default: unset
+      - SERVER_PORT="27888" # Required: Port the server will use; Default: 278888
+      - MAX_PLAYERS="8" # Required: Max Players for Server; Default: 8
+      - GAMETYPE="2" # 1 = Required: H.A.R.M vs. UNITY, 2 = DeathMatch; Default: 2
+      - DISABLE_WIZARD="False" # Optional: Disable server wizard on startup; Default: False
+      - CUSTOM_REZ="" # Optional: Any custom rez files, separated by a space (case-sensitive, WITHOUT file extension); Default: unset
+      - ADDITIONAL_ARGS="" # Optional: Additional game arguments; Default: unset
     volumes:
       - /path/to/your/customrez/files:/container/.wine/drive_c/nolf/custom/ # Directory for custom rez files you wish to load
     ports:

@@ -23,4 +23,4 @@ NetEndTime = 60.000000f
 NetGameType = 2.000000f
 NetSessionName = "A NOLF Docker Server"
 NetWeaponsStay = 1.000000f
-SendBandwidthSetting = 5.000000f
+SendBandwidthSetting = 4.000000f

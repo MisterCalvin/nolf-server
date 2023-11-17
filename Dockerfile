@@ -27,7 +27,7 @@ ENV \
 #	DEATHMATCH_MAPS="" \
 #	PERSIST_MAPLIST="False" \
 	ADDITIONAL_ARGS=""
-	
+
 RUN \
 	add-pkg wine && \
 	add-pkg --virtual build xvfb-run cabextract wget && \
@@ -41,13 +41,11 @@ RUN \
     	sed-patch 's|\\root\\|\\app\\|g' /container/.wine/userdef.reg && \
 	wineboot -u && \
 	echo 'disable' > $WINEPREFIX/.update-timestamp && \
-	chown -R 1000:1000 /container && \
-        del-pkg build
-
-WORKDIR /container/.wine/drive_c/nolf
+	del-pkg build
 
 COPY nolf_startup.sh /startapp.sh
-COPY --chown=1000:1000 ./gamefiles /container/.wine/drive_c/nolf
+COPY --chown=app:app ./gamefiles /container/.wine/drive_c/nolf
+COPY ./rootfs/etc/cont-init.d/50-take-own.sh /etc/cont-init.d/50-take-own.sh
 
 WORKDIR /container/.wine/drive_c/nolf
 

@@ -25,11 +25,20 @@ services:
       - "CUSTOM_REZ=" # Optional: Any custom rez files, separated by a space (case-sensitive, WITHOUT file extension); Default: unset
       - "ADDITIONAL_ARGS=" # Optional: Additional game arguments; Default: unset
     volumes:
+      - nolf-gamefiles:/container/.wine/drive_c/nolf
+      - nolf-logs:/container/.wine/drive_c/nolf
       - /path/to/your/customrez/files:/container/.wine/drive_c/nolf/custom/ # Directory for custom rez files you wish to load
     ports:
       - 27888-27889:27888-27889/udp # Query + Game
       - 5800:5800 # Server web management GUI
     restart: unless-stopped
+
+volumes:
+  nolf-gamefiles:
+    name: nolf-gamefiles
+
+  nolf-logs:
+    name: nolf-logs
 ```
 
 ### docker cli
@@ -53,6 +62,8 @@ docker run -d \
   -e ADDITIONAL_ARGS="" \
   -p 27888-27889:27888-27889/udp \
   -p 5800:5800 \
+  -v nolf-gamefiles:/container/.wine/drive_c/nolf \
+  -v nolf-logs:/config \
   -v /path/to/your/customrez/files:/container/.wine/drive_c/nolf/custom/ \
   --restart unless-stopped \
   ghcr.io/mistercalvin/nolf-server:latest

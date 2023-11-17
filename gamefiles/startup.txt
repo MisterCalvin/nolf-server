@@ -1,0 +1,10 @@
+[Rez]
+Rez0 = "nolf.rez"
+Rez1 = "nolf2.rez"
+Rez2 = "nolfdll.rez"
+Rez3 = "nolfl.rez"
+Rez4 = "nolfu003.rez"
+Rez5 = "nolfc001.rez"
+Rez6 = "nolfc002.rez"
+Rez7 = "nolfgoty.rez"
+Rez8 = "MODERNIZER.rez"

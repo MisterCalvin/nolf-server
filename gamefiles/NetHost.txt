@@ -1,0 +1,26 @@
+
+
+[Host]
+NetFragScore = 0.000000f
+NetFriendlyFire = 0.000000f
+NetIntelScore = 20.000000f
+NetEndScore = 50.000000f
+NetCAGameEnd = 0.000000f
+NetPassword = ""
+NetRunSpeed = 1.500000f
+NetDefaultWeapon = 21.000000f
+NetHitLocation = 0.000000f
+NetPort = 27888.000000f
+NetDMGameEnd = 0.000000f
+NetFallDamageScale = 1.000000f
+NetRespawnScale = 1.000000f
+NetUsePassword = 0.000000f
+NetAudioTaunts = 1.000000f
+NetArmorHealthPercent = 0.000000f
+NetMaxPlayers = 8.000000f
+NetEndFrags = 50.000000f
+NetEndTime = 60.000000f
+NetGameType = 2.000000f
+NetSessionName = "A NOLF Docker Server"
+NetWeaponsStay = 1.000000f
+SendBandwidthSetting = 5.000000f

@@ -10,12 +10,12 @@ services:
       - "KEEP_APP_RUNNING=1" # Optional: Restart app inside the container if it has crashed; Default: 1
       - "DISPLAY_WIDTH=800" # Optional: Display height of the server application inside the container; Default: 800
       - "DISPLAY_HEIGHT=600" # Optional: Display width of the server application inside the container; Default: 600
-      - "SERVER_NAME=MrCalvin DEV" # Required: The name of your server (<= 24 Characters); Default: A NOLF Docker Server
+      - "SERVER_NAME=A NOLF Docker Server" # Required: The name of your server (<= 24 Characters); Default: A NOLF Docker Server
       - "SERVER_PASSWORD=" # Optional: Password for your server; Default: unset
       - "SERVER_PORT=27888" # Required: Port the server will use; Default: 278888
       - "MAX_PLAYERS=8" # Required: Max Players for Server; Default: 8
       - "GAMETYPE=2" # 1 = Required: H.A.R.M vs. UNITY, 2 = DeathMatch; Default: 2
-      - "DISABLE_WIZARD=True" # Optional: Disable server wizard on startup; Default: False
+      - "DISABLE_WIZARD=False" # Optional: Disable server wizard on startup; Default: False
       - "CUSTOM_REZ=" # Optional: Any custom rez files, separated by a space (case-sensitive, WITHOUT file extension); Default: unset
       - "ADDITIONAL_ARGS=" # Optional: Additional game arguments; Default: unset
     volumes:

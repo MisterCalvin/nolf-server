@@ -95,7 +95,7 @@ I have not include the necessary game files in the repo, they are only available
 ## Notes
 - Server passwords do not work. I included the functionality for them inside the container startup script, but anyone will be able to join your server without supplying a password. If you have a fix for this please contact me and I will update the image.
 
-- Under game options, Server Address will show the internal IP of the container rather than your public IP address, will look in to a fix in the future.
+- Under game options, Server Address will show the internal IP of the container rather than your public IP address. You can fix this by setting `network_mode: host` inside your compose file but I don't recommend this. This doesn't affect gameplay or server operation at all, only mentioning it here for reference. Will look in to a fix in the future.
 
 - The image has additional environment variables you can customize, take a look at [this page](https://github.com/jlesage/docker-baseimage-gui#environment-variables) for more information. I have not tested the container with any variables other than what is defined in this repo; use these at your own risk.
 

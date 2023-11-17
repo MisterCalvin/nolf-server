@@ -37,15 +37,15 @@ services:
 ```
 docker run -d \
   --name=nolf-server \
-  -e TZ="UTC"
+  -e TZ="UTC" \
   -e USER_ID="1000" \
   -e GROUP_ID="1000" \
   -e KEEP_APP_RUNNING="1" \
   -e DISPLAY_WIDTH="800" \
-  -e DISPLAY_HEIGHT="600"
-  -e SERVER_NAME="" \
+  -e DISPLAY_HEIGHT="600" \
+  -e SERVER_NAME="A Docker NOLF Server" \
   -e SERVER_PASSWORD="" \
-  -e SERVER_PORT="" \
+  -e SERVER_PORT="27888" \
   -e MAX_PLAYERS="8" \
   -e GAMETYPE="2" \
   -e DISABLE_WIZARD="False" \
@@ -53,7 +53,7 @@ docker run -d \
   -e ADDITIONAL_ARGS="" \
   -p 27888-27889:27888-27889/udp \
   -p 5800:5800 \
-  -v /path/to/your/customrez/files:/container/.wine/drive_c/nolf/custom/
+  -v /path/to/your/customrez/files:/container/.wine/drive_c/nolf/custom/ \
   --restart unless-stopped \
   ghcr.io/mistercalvin/nolf-server:latest
 ```

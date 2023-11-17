@@ -46,7 +46,12 @@ RUN \
 COPY nolf_startup.sh /startapp.sh
 COPY --chown=app:app ./gamefiles /container/.wine/drive_c/nolf
 COPY ./rootfs/etc/cont-init.d/50-take-own.sh /etc/cont-init.d/50-take-own.sh
+COPY ./rootfs/etc/cont-finish.d/51-copy-config.sh /etc/cont-finish.d/51-copy-config.sh
 
+RUN \
+	mkdir -p /config/nolf/ && \
+      	mv /container/.wine/drive_c/nolf/NetHost.txt /config/nolf/ 
+ 
 WORKDIR /container/.wine/drive_c/nolf
 
 EXPOSE 27888-27889/udp

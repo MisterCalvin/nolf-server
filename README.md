@@ -25,8 +25,7 @@ services:
       - "CUSTOM_REZ=" # Optional: Any custom rez files, separated by a space (case-sensitive, WITHOUT file extension); Default: unset
       - "ADDITIONAL_ARGS=" # Optional: Additional game arguments; Default: unset
     volumes:
-      - nolf-gamefiles:/container/.wine/drive_c/nolf
-      - nolf-logs:/config
+      - nolf-config:/config
       - /path/to/your/customrez/files:/container/.wine/drive_c/nolf/custom/ # Directory for custom rez files you wish to load
     ports:
       - 27888-27889:27888-27889/udp # Query + Game
@@ -34,11 +33,8 @@ services:
     restart: unless-stopped
 
 volumes:
-  nolf-gamefiles:
-    name: nolf-gamefiles
-
-  nolf-logs:
-    name: nolf-logs
+  nolf-config:
+    name: nolf-config
 ```
 
 ### docker cli
@@ -62,8 +58,7 @@ docker run -d \
   -e ADDITIONAL_ARGS="" \
   -p 27888-27889:27888-27889/udp \
   -p 5800:5800 \
-  -v nolf-gamefiles:/container/.wine/drive_c/nolf \
-  -v nolf-logs:/config \
+  -v nolf-config:/config \
   -v /path/to/your/customrez/files:/container/.wine/drive_c/nolf/custom/ \
   --restart unless-stopped \
   ghcr.io/mistercalvin/nolf-server:latest
@@ -96,8 +91,6 @@ If you intend to build the Dockerfile yourself, I have not pinned the packages a
 | cabextract					  | 1.11-r1	 |
 
 ## Notes
-- The `docker-compose.yml` (the recommended way to run and manage the server) will create two named volumes: `nolf-gamefiles` and `nolf-logs`. Unfortunately `nolf-gamefiles` will create a full local copy of all the containers contents, meaning you will be using double the disk space. This is due to the fact that the container is ephemeral, but we need to persist `NetHost.txt` in order to save our current game settings. I will fix this in the near future, but if you wish to avoid this you can remove the named `nolf-gamefiles` volume and replace it with a bind mount on the host. Please ensure it has proper permissions, and try to use `gamefiles/startup.txt` from this repo to ensure the script correctly updates any custom rez files.
-
 - Server passwords do not work. I included the functionality for them inside the container startup script, but anyone will be able to join your server without supplying a password. If you have a fix for this please contact me and I will update the image.
 
 - Under game options, Server Address will show the internal IP of the container rather than your public IP address, will look in to a fix in the future.

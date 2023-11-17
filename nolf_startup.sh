@@ -93,4 +93,4 @@ else
         DISABLE_WIZARD=""
 fi
 
-exec wine NolfServ.exe ${DISABLE_WIZARD:-} -NetSessionName "${SERVER_NAME:-"A NOLF Docker Server"}" -NetGameType ${GAMETYPE:=2} ${PASSWORD_ENABLED:+"-NetUsePassword $PASSWORD_ENABLED"} ${SERVER_PASSWORD:+"-NetPassword $SERVER_PASSWORD"} -NetMaxPlayers ${MAX_PLAYERS:-8} -NetPort ${SERVER_PORT:-27888} ${ADDITIONAL_ARGS:-} 
+exec wine NolfServ.exe ${DISABLE_WIZARD:-} -NetSessionName "${SERVER_NAME:-"A Docker NOLF Server"}" -NetGameType ${GAMETYPE:=2} ${PASSWORD_ENABLED:+"-NetUsePassword $PASSWORD_ENABLED"} ${SERVER_PASSWORD:+"-NetPassword $SERVER_PASSWORD"} -NetMaxPlayers ${MAX_PLAYERS:-8} -NetPort ${SERVER_PORT:-27888} ${ADDITIONAL_ARGS:-}
